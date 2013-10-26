@@ -42,3 +42,29 @@ on the word "at" in our string because we hit the 3 below the "e" so that word
 must be three letters long skipping the 2 under the "a" in at.
 """
 
+from optparse import OptionParser
+import sys, os
+
+def main(args):
+    """reads in argument and runs algorithm"""
+    # Default arguments
+    pathToInputFile = "./TextDocuments/sonnet.txt"
+    pathToDictonary = "./TextDocuments/words.txt"
+
+    #parce commandline agruments
+    parser = OptionParser()
+    parser.add_option("-f", "--file", dest="input_file", help="Specify a path to an input file")
+    parser.add_option("-d", "--Dict", dest="path_to_dictonary", help="Specity a path to a dictonary")
+
+    (options, args) = parser.parse_args()
+
+    if options.input_file:
+        pathToInputFile = options.input_file
+
+    if options.path_to_dictonary:
+        pathToDictonary = options.path_to_dictonary
+
+    #TODO run the algorithm with the dictonary and the file 
+
+if __name__ == '__main__':
+    main(sys.argv[1:])

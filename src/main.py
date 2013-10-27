@@ -43,7 +43,9 @@ must be three letters long skipping the 2 under the "a" in at.
 """
 
 from optparse import OptionParser
+from algorithm import splitStringIntoWords
 import sys, os
+
 
 def main(args):
     """reads in argument and runs algorithm"""
@@ -64,7 +66,35 @@ def main(args):
     if options.path_to_dictonary:
         pathToDictonary = options.path_to_dictonary
 
-    #TODO run the algorithm with the dictonary and the file 
+    dictonary, longestLength = loadDictonary(pathToDictonary)
+    inputString = loadInputString(pathToInputFile)
+
+    answer = splitStringIntoWords(dictonary,
+                                 longestLength
+                                 ,inputString)
+    print answer 
+
+def loadDictonary(filePath):
+    dictonary = set()
+    lengthOfLongestWord = 0
+    with open(filePath) as f:
+        for line in f:
+            if len(line.strip()) > lengthOfLongestWord:
+                lengthOfLongestWord = len(line.strip())
+            dictonary.add(line.strip())
+
+    return (dictonary, lengthOfLongestWord)
+
+def loadInputString(filePath):
+    stringToSplit = None
+
+    # Reads first line of file only
+    with open(filePath) as f:
+        stringToSplit = f.readline().strip()
+
+    return stringToSplit
 
 if __name__ == '__main__':
     main(sys.argv[1:])
+
+

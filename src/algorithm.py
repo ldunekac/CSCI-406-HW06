@@ -11,7 +11,7 @@ def splitStringIntoWords(dictonary, longestLength, stringToSplit):
         if stringToSplit[front:front + back] in dictonary \
         and ((front + back) == wordIndicatorLength  \
         or wordIndicator[front+back] >= 1):
-            wordIndicator[front] = True
+            wordIndicator[front] = back
             front = front - 1
             back = 1
         else:
@@ -21,9 +21,20 @@ def splitStringIntoWords(dictonary, longestLength, stringToSplit):
                 front = front - 1
         if front < 0:
             end = True
-    print wordIndicator
     if wordIndicator[0] > 0:
-        return True
+        return splitString(stringToSplit, wordIndicator)
 
-    return False
+    return "Not a valid phrase"
+
+def splitString(stringToSplit, wordIndicator):
+    wordIter = 0
+    stringWithSpaces = ""
+    while wordIter < len(stringToSplit):
+        lengthOfword = wordIndicator[wordIter]
+        stringWithSpaces += " "
+        stringWithSpaces += stringToSplit[wordIter:wordIter + lengthOfword]
+        wordIter += lengthOfword
+
+    return stringWithSpaces
+
 

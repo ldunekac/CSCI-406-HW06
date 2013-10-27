@@ -50,7 +50,7 @@ import sys, os
 def main(args):
     """reads in argument and runs algorithm"""
     # Default arguments
-    pathToInputFile = "./TextDocuments/sonnet.txt"
+    pathToInputFile = "./TextDocuments/genesis.txt"
     pathToDictonary = "./TextDocuments/words.txt"
 
     #parce commandline agruments

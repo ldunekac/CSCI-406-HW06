@@ -1,4 +1,3 @@
-
 from array import array
 
 def splitStringIntoWords(dictonary, longestLength, stringToSplit):
@@ -36,5 +35,3 @@ def splitString(stringToSplit, wordIndicator):
         wordIter += lengthOfword
 
     return stringWithSpaces
-
-

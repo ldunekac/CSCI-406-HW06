@@ -86,11 +86,12 @@ def loadDictonary(filePath):
     return (dictonary, lengthOfLongestWord)
 
 def loadInputString(filePath):
-    stringToSplit = None
+    stringToSplit = ""
 
-    # Reads first line of file only
+    # Reads all lines of file 
     with open(filePath) as f:
-        stringToSplit = f.readline().strip()
+        for line in f:
+            stringToSplit += line.strip()
 
     return stringToSplit
 
